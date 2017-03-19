@@ -9,11 +9,13 @@ import{OnInit} from'@angular/core';
   <ul>
   <li *ngFor="let contact of contacts" (click)="onSelect(contact)">
   
-  <h3 >{{contact.firstName}}</h3>
+  <h3 >{{contact.firstName}}
+  {{contact.last}}</h3>
  
   </li>
   </ul>   
-<contact [contact]="selectedcontact"></contact>
+
+<contact *ngIf="selectedcontact != null"[contactnew]="selectedcontact"></contact>
 
 `,
 providers:[ContactService]
@@ -28,7 +30,7 @@ export class ContactListComponent  implements OnInit{
 
 
     }
-public selectedcontact={};
+public selectedcontact=null;
 onSelect(contact){
 this.selectedcontact=contact;
 
